@@ -1,0 +1,1 @@
+LogWrn("somecomplex string （）*#&￥#&（）@#*￥）——%*lkfjg dl dlgld看过jo四大金刚哦or")
