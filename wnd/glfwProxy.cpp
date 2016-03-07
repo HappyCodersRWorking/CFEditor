@@ -6,13 +6,26 @@
 #include <streambuf>
 #include "../common/tools.h"
 #include "../luaProxy/luaProxy.h"
+#include "../input/InputEventLsnr_debug.h"
+#include "../input/InputMngr.h"
+
 #include "wxMainFrm.h"
+#include <iostream>
+
+void PrintInfo();
+
+void MouseBtnFunc(GLFWwindow* wnd, int, int, int);
+void MouseMoveFunc(GLFWwindow* wnd, double, double);
+void MouseEnterFunc(GLFWwindow* wnd, int);
+void MouseWheelFunc(GLFWwindow* wnd, double, double);
+void KeyFunc(GLFWwindow* wnd, int, int, int, int);
 
 namespace CFGui
 {
 	CGlfwProxy::CGlfwProxy() 
 		:m_nNextMenuItemID(100)
 		,m_pMainFrm(NULL)
+		, m_glWnd(NULL)
 	{
 	}
 	
@@ -35,6 +48,62 @@ namespace CFGui
 		std::string contents(buf.str());
 
 		CFLua::CLuaProxy::Ins().DoString(contents.c_str());
+		return true;
+	}
+
+	bool CGlfwProxy::_createOpengl()
+	{
+
+		if (!glfwInit())
+			return -1;
+
+		m_glWnd = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+		if (!m_glWnd)
+		{
+			glfwTerminate();
+			return -1;
+		}
+
+		glfwMakeContextCurrent(m_glWnd);
+
+		PrintInfo();
+
+		int w, h;
+		glfwGetWindowSize(m_glWnd, &w, &h);
+
+		int x, y;
+		glfwGetWindowPos(m_glWnd, &x, &y);
+
+		glfwSetWindowTitle(m_glWnd, "OK,this is a window.");
+
+		HWND hdl = glfwGetWin32Window(m_glWnd);
+
+		LONG style = ::GetWindowLong(hdl, GWL_STYLE);
+		style &= (~WS_BORDER);
+		style &= (~WS_CAPTION);
+		style &= (~WS_DLGFRAME);
+		style &= (~WS_SYSMENU);
+		style &= (~WS_THICKFRAME);
+		style &= (~WS_MINIMIZEBOX);
+		style &= (~WS_MAXIMIZEBOX);
+		::SetWindowLong(hdl, GWL_STYLE, style);
+
+		glfwSetMouseButtonCallback(m_glWnd, MouseBtnFunc);
+		glfwSetCursorPosCallback(m_glWnd, MouseMoveFunc);
+		glfwSetScrollCallback(m_glWnd, MouseWheelFunc);
+		glfwSetKeyCallback(m_glWnd, KeyFunc);
+
+		//
+		CFInput::InputEventLsnr_Debug lsnr;
+
+		CFInput::CInputMngr::Ins().RegisterEventLsnr(CFInput::MouseDown, &lsnr);
+		CFInput::CInputMngr::Ins().RegisterEventLsnr(CFInput::MouseUp, &lsnr);
+		CFInput::CInputMngr::Ins().RegisterEventLsnr(CFInput::MouseMove, &lsnr);
+		CFInput::CInputMngr::Ins().RegisterEventLsnr(CFInput::MouseWheel, &lsnr);
+		CFInput::CInputMngr::Ins().RegisterEventLsnr(CFInput::KeyDown, &lsnr);
+		CFInput::CInputMngr::Ins().RegisterEventLsnr(CFInput::KeyUp, &lsnr);
+		//
+
 		return true;
 	}
 
@@ -160,5 +229,79 @@ namespace CFGui
 			CWxMainFrm* mf = (CWxMainFrm*)m_pMainFrm;
 			mf->DisplayLog( s );
 		}
+	}
+
+	void CGlfwProxy::MessageBox(const char* s)
+	{
+		wxMessageBox(wxString(s), wxString(""));
+	}
+
+	void CGlfwProxy::OnMainFrmMoved(wxPoint pos, wxSize sz)
+	{
+
+	}
+}
+
+////
+void PrintInfo()
+{
+	const char* ver = (const char*)glGetString(GL_VERSION);
+
+	GLenum err = glewInit();
+
+	if (err != GLEW_OK)
+	{
+		fprintf(stderr, "Error: %s\n", glewGetErrorString(err));
+		exit(-2);
+	}
+
+	int NumberOfExtensions;
+	glGetIntegerv(GL_NUM_EXTENSIONS, &NumberOfExtensions);
+	for (int i = 0; i<NumberOfExtensions; i++)
+	{
+		const GLubyte *ccc = glGetStringi(GL_EXTENSIONS, i);
+		//Now, do something with ccc  
+		std::cout << ccc << std::endl;
+	}
+}
+
+void MouseBtnFunc(GLFWwindow* wnd, int btn, int action, int flg)
+{
+	double x;
+	double y;
+	glfwGetCursorPos(wnd, &x, &y);
+
+	if (action == GLFW_PRESS)
+		CFInput::CInputMngr::Ins().OnMouseDown(btn, x, y, flg);
+	else if (action == GLFW_RELEASE)
+		CFInput::CInputMngr::Ins().OnMouseUp(btn, x, y, flg);
+}
+
+void MouseMoveFunc(GLFWwindow* wnd, double x, double y)
+{
+	CFInput::CInputMngr::Ins().OnMouseMove(x, y, 0);
+}
+
+void MouseEnterFunc(GLFWwindow* wnd, int){}
+
+void MouseWheelFunc(GLFWwindow* wnd, double x, double y)
+{
+	double px;
+	double py;
+
+	glfwGetCursorPos(wnd, &px, &py);
+
+	CFInput::CInputMngr::Ins().OnMouseWheel((int)(x + y), px, py, 0);
+}
+
+void KeyFunc(GLFWwindow* wnd, int key, int scanCode, int action, int flg)
+{
+	if (action == GLFW_PRESS)
+	{
+		CFInput::CInputMngr::Ins().OnKeyDown(key);
+	}
+	else if (action == GLFW_RELEASE)
+	{
+		CFInput::CInputMngr::Ins().OnKeyUp(key);
 	}
 }

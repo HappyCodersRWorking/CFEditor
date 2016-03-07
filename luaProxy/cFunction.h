@@ -15,6 +15,8 @@ extern "C" int LogMsg(lua_State*);
 extern "C" int LogWrn(lua_State*);
 extern "C" int LogErr(lua_State*);
 
+extern "C" int MsgBox(lua_State*);
+
 //
 typedef int(*luaFormatFunc)(lua_State*);
 
@@ -34,6 +36,7 @@ static FuncInfo s_luaFuncInfo[] =
 	{ "LogMsg", LogMsg },
 	{ "LogWrn", LogWrn },
 	{ "LogErr", LogErr },
+	{ "MessageBox", MsgBox },
 };
 
 #endif

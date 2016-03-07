@@ -1,6 +1,5 @@
 #include "cFunction.h"
 #include "../Editor/EditorContext.h"
-#include "../wnd/glfwProxy.h"
 
 extern "C" int EnterEditMode(lua_State* L)
 {
@@ -46,8 +45,8 @@ extern "C" int AddMenuItem(lua_State* L)
 	const char* s0 = luaL_checkstring(L, 1, &sz);
 	const char* s1 = luaL_checkstring(L, 2, &sz);
 
-	int ret = CFGui::CGlfwProxy::Ins().AddMenu(s0, s1);
-	lua_pushinteger(L, ret);
+	//int ret = CFGui::CGlfwProxy::Ins().AddMenu(s0, s1);
+	lua_pushinteger(L, 0);
 	return 1;
 }
 
@@ -55,7 +54,7 @@ extern "C" int LogMsg(lua_State* L)
 {
 	size_t sz = 0;
 	const char* s = luaL_checkstring(L, 1, &sz);
-	CFGui::CGlfwProxy::Ins().DisplayLog(s, 0);
+	//CFGui::CGlfwProxy::Ins().DisplayLog(s, 0);
 	return 0;
 }
 
@@ -63,7 +62,7 @@ extern "C" int LogWrn(lua_State* L)
 {
 	size_t sz = 0;
 	const char* s = luaL_checkstring(L, 1, &sz);
-	CFGui::CGlfwProxy::Ins().DisplayLog(s, 1);
+	//CFGui::CGlfwProxy::Ins().DisplayLog(s, 1);
 	return 0;
 }
 
@@ -71,7 +70,16 @@ extern "C" int LogErr(lua_State* L)
 {
 	size_t sz = 0;
 	const char* s = luaL_checkstring(L, 1, &sz);
-	CFGui::CGlfwProxy::Ins().DisplayLog(s, 2);
+	//CFGui::CGlfwProxy::Ins().DisplayLog(s, 2);
+
+	return 0;
+}
+
+extern "C" int MsgBox(lua_State* L)
+{
+	size_t sz = 0;
+	const char* s = luaL_checkstring(L, 1, &sz);
+	//CFGui::CGlfwProxy::Ins().DisplayLog(s, 2);
 
 	return 0;
 }

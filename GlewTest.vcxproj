@@ -131,8 +131,8 @@
     <ClInclude Include="lua\lzio.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="wnd\glfwProxy.h" />
-    <ClInclude Include="wnd\glWndProxy.h" />
+    <ClInclude Include="wnd\glContext.h" />
+    <ClInclude Include="wnd\glWnd.h" />
     <ClInclude Include="wnd\wxGuiMngr.h" />
     <ClInclude Include="wnd\wxMainFrm.h" />
     <ClInclude Include="wxApp.h" />
@@ -143,7 +143,6 @@
     <ClCompile Include="Editor\EditorContext.cpp" />
     <ClCompile Include="Editor\GLEditWndContext.cpp" />
     <ClCompile Include="Editor\mesh\EditableMesh.cpp" />
-    <ClCompile Include="GlewTest.cpp" />
     <ClCompile Include="input\InputMngr.cpp" />
     <ClCompile Include="logger\logger.cpp" />
     <ClCompile Include="luaProxy\cFunction.cpp" />
@@ -182,8 +181,8 @@
     <ClCompile Include="lua\lvm.c" />
     <ClCompile Include="lua\lzio.c" />
     <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="wnd\glfwProxy.cpp" />
-    <ClCompile Include="wnd\glWndProxy.cpp" />
+    <ClCompile Include="wnd\glContext.cpp" />
+    <ClCompile Include="wnd\glWnd.cpp" />
     <ClCompile Include="wnd\wxGuiMngr.cpp" />
     <ClCompile Include="wnd\wxMainFrm.cpp" />
     <ClCompile Include="wxApp.cpp" />

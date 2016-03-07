@@ -7,6 +7,10 @@ class CFEditorApp: public wxApp
 {
 public:
 	virtual bool OnInit();
+	virtual bool ProcessIdle() ;
+protected:
+	wxFrame	*m_pMainFrm;
 };
+
 //DECLARE_APP(CFEditorApp)
 #endif

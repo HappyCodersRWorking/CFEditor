@@ -5,6 +5,9 @@
 #include <vector>
 #include <map>
 #include "wx/wx.h"
+#include <GL/glew.h>
+#include "glfw3.h"
+#include "glfw3native.h"
 
 namespace CFGui
 {
@@ -31,9 +34,15 @@ namespace CFGui
 
 		void OnMenuItemEvent(int id);
 		void DisplayLog(const char* s, int tp = 0);		// for temp use
+
+		void MessageBox(const char*);
+
+		void OnMainFrmMoved(wxPoint pos, wxSize sz);
 	protected:
 		CGlfwProxy();
 		virtual ~CGlfwProxy();
+
+		bool _createOpengl();
 
 		std::map< int, MenuItem >		m_mpMenuItems;
 
@@ -42,6 +51,10 @@ namespace CFGui
 
 		wxFrame		*m_pMainFrm;
 		wxMenuItem* _addMenuItem( wxMenu* parent , std::vector<std::string>& txts );
+
+		//
+		GLFWwindow*			m_glWnd ;
+
 	};
 }
 
