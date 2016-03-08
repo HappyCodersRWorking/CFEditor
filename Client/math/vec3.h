@@ -71,6 +71,29 @@ namespace CFMath
 			return *this;
 		}
 
+		T Dot(const Vec3& o)	const
+		{
+			return x * o.X() + y * o.Y() + z * o.Z();
+		}
+
+		Vec3 Cross(const Vec3& o)	const
+		{
+			return Vec3(y * o.X() - z * o.Y(),
+				-x * o.Z() + z * o.X(),
+				y * o.Z() - z * o.Y());
+		}
+
+		T operator[](int ind)
+		{
+			if (ind == 0)
+				return x;
+			if (ind == 1)
+				return y;
+			if (ind == 2)
+				return z;
+			return 0xffffffff;
+		}
+
 		Vec3 operator*(T prm)
 		{
 			return Vec3(this->m_x * prm,

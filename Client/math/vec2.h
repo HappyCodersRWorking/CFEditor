@@ -1,7 +1,7 @@
 #ifndef _CF_VEC2_H_
 #define _CF_VEC2_H_
 
-namespace LinearMath
+namespace CFMath
 {
 	template<typename  T>
 	class Vec2
