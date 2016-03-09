@@ -38,6 +38,8 @@ namespace CFGui
 		m_pGlCanvas->SetCurrent(*m_pGlCntxt);
 
 		Centre();
+		wxSize sz(800,600);
+		this->SetSize(sz);
 	}
 
 	CWxMainFrm::~CWxMainFrm() { }
@@ -69,30 +71,12 @@ namespace CFGui
 	void CWxMainFrm::OnWndSize(wxSizeEvent& evt)
 	{
 		DisplayLog(_T("OnWndSize"));
+		formatInternalCtrls();
 	}
 
 	void CWxMainFrm::OnWndSizing(wxSizeEvent& evt)
 	{
 		DisplayLog(_T("OnWndSizing"));
-
-		wxSize sz = this->GetSize();
-		if (m_pLstBox)
-		{
-			m_pLstBox->SetPosition(wxPoint(5, 0));
-			m_pLstBox->SetSize((sz.x - 10)/2, sz.y - 90);
-		}
-
-		if (m_pGlCanvas)
-		{
-			m_pGlCanvas->SetPosition(wxPoint(5 + (sz.x - 10) / 2, 0));
-			m_pGlCanvas->SetSize((sz.x - 10) / 2, sz.y - 90);
-		}
-
-		if (m_pLogText)
-		{
-			m_pLogText->SetPosition(wxPoint(5, sz.y - 80));
-			m_pLogText->SetSize(sz.x - 10, 20);
-		}
 	}
 
 	void CWxMainFrm::OnWndMove(wxMoveEvent& evt)
@@ -117,5 +101,27 @@ namespace CFGui
 		wxPoint p= this->GetPosition();
 		wxSize sz = this->GetSize();
 		//CFGui::CGlfwProxy::Ins().OnMainFrmMoved( p , sz);
+	}
+
+	void CWxMainFrm::formatInternalCtrls()
+	{
+		wxSize sz = this->GetSize();
+		if (m_pLstBox)
+		{
+			m_pLstBox->SetPosition(wxPoint(5, 0));
+			m_pLstBox->SetSize((sz.x - 10) / 2, sz.y - 90);
+		}
+
+		if (m_pGlCanvas)
+		{
+			m_pGlCanvas->SetPosition(wxPoint(5 + (sz.x - 10) / 2, 0));
+			m_pGlCanvas->SetSize((sz.x - 10) / 2, sz.y - 90);
+		}
+
+		if (m_pLogText)
+		{
+			m_pLogText->SetPosition(wxPoint(5, sz.y - 80));
+			m_pLogText->SetSize(sz.x - 10, 20);
+		}
 	}
 }

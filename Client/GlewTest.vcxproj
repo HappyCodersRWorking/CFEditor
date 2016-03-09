@@ -88,6 +88,7 @@
     <ClInclude Include="command\cmdGen.h" />
     <ClInclude Include="command\command.h" />
     <ClInclude Include="common\cfObject.h" />
+    <ClInclude Include="common\tinyStr.h" />
     <ClInclude Include="common\tools.h" />
     <ClInclude Include="Editor\Editable.h" />
     <ClInclude Include="Editor\EditEventLnsr.h" />
@@ -141,6 +142,8 @@
     <ClInclude Include="math\vec4.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="tinyxml\tinystr.h" />
+    <ClInclude Include="tinyxml\tinyxml.h" />
     <ClInclude Include="wnd\glContext.h" />
     <ClInclude Include="wnd\glWnd.h" />
     <ClInclude Include="wnd\wxGuiMngr.h" />
@@ -150,6 +153,7 @@
   <ItemGroup>
     <ClCompile Include="3DScn\scnMngr.cpp" />
     <ClCompile Include="3DScn\scnNode.cpp" />
+    <ClCompile Include="common\tinyStr.cpp" />
     <ClCompile Include="common\tools.cpp" />
     <ClCompile Include="Editor\Editable.cpp" />
     <ClCompile Include="Editor\EditorContext.cpp" />
@@ -193,6 +197,10 @@
     <ClCompile Include="lua\lvm.c" />
     <ClCompile Include="lua\lzio.c" />
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="tinyxml\tinystr.cpp" />
+    <ClCompile Include="tinyxml\tinyxml.cpp" />
+    <ClCompile Include="tinyxml\tinyxmlerror.cpp" />
+    <ClCompile Include="tinyxml\tinyxmlparser.cpp" />
     <ClCompile Include="wnd\glContext.cpp" />
     <ClCompile Include="wnd\glWnd.cpp" />
     <ClCompile Include="wnd\wxGuiMngr.cpp" />

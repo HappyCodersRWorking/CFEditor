@@ -32,6 +32,24 @@ namespace CFMath
 			return m_z;
 		}
 
+		T LengthSqu()
+		{
+			return x*x + y*y + z*z;
+		}
+
+		T Length()
+		{
+			return sqrt(x*x + y*y + z*z);
+		}
+
+		void Normalize()
+		{
+			T len = Length();
+			x /= len;
+			y /= len;
+			z /= len;
+		}
+
 		const Vec3& operator=(const Vec3& other)
 		{
 			this->m_x = other.X();

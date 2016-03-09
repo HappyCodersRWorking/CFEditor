@@ -23,7 +23,7 @@ namespace CFScn
 		return true;
 	}
 	
-	bool CScnNode::HasChild(CScnNode* ptr, bool itr = false)
+	bool CScnNode::HasChild(CScnNode* ptr, bool itr )
 	{
 		if (!itr)
 		{

@@ -2,9 +2,8 @@
 
 namespace CFScn
 {
-	CScnMngr::CScnMngr()
+	CScnMngr::CScnMngr() :m_pRootNode(NULL)
 	{
-
 	}
 	
 	CScnMngr::~CScnMngr()
@@ -13,6 +12,9 @@ namespace CFScn
 
 	bool CScnMngr::Init()
 	{
+		if (!m_pRootNode)
+			m_pRootNode = new CScnNode();
+
 		return true;
 	}
 }

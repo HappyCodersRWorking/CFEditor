@@ -11,6 +11,7 @@ namespace CFGui
 	{
 	public:
 		CGLWnd(wxWindow *parent, int *attribList = NULL);
+		~CGLWnd();
 
 		void SetContext(CFGLContext *cntxt)	{ m_pContext = cntxt; }
 

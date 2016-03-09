@@ -46,7 +46,7 @@ namespace CF
 				m_pos.Set(x, y);
 			}
 
-			void Set(int ky, const LinearMath::Vec2f& p, int flg)
+			void Set(int ky, const CFMath::Vec2f& p, int flg)
 			{
 				m_key = ky;
 				m_flg = flg;
@@ -54,12 +54,12 @@ namespace CF
 			}
 
 			int Key()	{ return m_key ; }
-			const LinearMath::Vec2f& Pos()	{ return m_pos; }
+			const CFMath::Vec2f& Pos()	{ return m_pos; }
 			int Flag()	{ return m_flg; }
 		protected:
 			int			m_key;
 			int			m_flg;
-			LinearMath::Vec2f	m_pos;
+			CFMath::Vec2f	m_pos;
 		};
 
 		typedef MouseDownEvent MouseUpEvent;
@@ -74,17 +74,17 @@ namespace CF
 				m_pos.Set(x, y);
 			}
 
-			void Set(int ky, const LinearMath::Vec2f& p , int flg)
+			void Set(int ky, const CFMath::Vec2f& p , int flg)
 			{
 				m_flg = flg;
 				m_pos = p;
 			}
 
 			int Flag()	{ return m_flg ; }
-			const LinearMath::Vec2f& Pos()	{ return m_pos ; }
+			const CFMath::Vec2f& Pos()	{ return m_pos ; }
 		protected:
 			int					m_flg ;
-			LinearMath::Vec2f	m_pos ;
+			CFMath::Vec2f	m_pos ;
 		};
 
 		class MouseWheelEvent : public Event
@@ -98,7 +98,7 @@ namespace CF
 				m_pos.Set(x, y);
 			}
 
-			void Set(int ky, const LinearMath::Vec2f& p, int delta, int flg)
+			void Set(int ky, const CFMath::Vec2f& p, int delta, int flg)
 			{
 				m_flg = flg;
 				m_delta = delta;
@@ -107,11 +107,11 @@ namespace CF
 
 			int Flag()	{ return m_flg; }
 			int Delta()	{ return m_delta; }
-			const LinearMath::Vec2f& Pos()	{ return m_pos; }
+			const CFMath::Vec2f& Pos()	{ return m_pos; }
 		protected:
 			int					m_flg;
 			int					m_delta;
-			LinearMath::Vec2f	m_pos;
+			CFMath::Vec2f	m_pos;
 		};
 	}
 }

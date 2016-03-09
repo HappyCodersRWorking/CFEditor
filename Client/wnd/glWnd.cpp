@@ -24,7 +24,8 @@ m_yangle(30.0),
 //m_spinTimer(this, SpinTimer),
 m_paintTmr(this,5),
 m_useStereo(false),
-m_stereoWarningAlreadyDisplayed(false)
+m_stereoWarningAlreadyDisplayed(false),
+m_pContext(NULL)
 {
 	if (attribList)
 	{
@@ -38,6 +39,12 @@ m_stereoWarningAlreadyDisplayed(false)
 	}
 
 	m_paintTmr.Start(20);
+}
+
+CGLWnd::~CGLWnd()
+{
+	if (m_pContext)
+		delete m_pContext;
 }
 
 void CGLWnd::OnPaint(wxPaintEvent& WXUNUSED(event))

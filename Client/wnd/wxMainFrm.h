@@ -25,6 +25,8 @@ namespace CFGui
 		void OnWndMoveStart(wxMoveEvent& evt);
 		void OnWndMoveEnd(wxMoveEvent& evt);
 
+		void formatInternalCtrls();
+
 		wxStaticText		*m_pLogText;
 
 		wxListBox			*m_pLstBox;

@@ -20,7 +20,7 @@ namespace CFInput
 	protected:
 		double				dTime;
 		InputEventType		eType;
-		LinearMath::Vec2f	vMousePos;
+		CFMath::Vec2f		vMousePos;
 		int					nMouseBtn;
 		int					nKey;
 		int					nFlg;
@@ -48,8 +48,8 @@ namespace CFInput
 		InputEventType GetType() const { return  eType; }
 		void SetType(InputEventType tp)	{ eType = tp; }
 
-		LinearMath::Vec2f GetMousePos() const { return vMousePos; }
-		void SetMousePos(const LinearMath::Vec2f& val) { vMousePos = val; }
+		CFMath::Vec2f GetMousePos() const { return vMousePos; }
+		void SetMousePos(const CFMath::Vec2f& val) { vMousePos = val; }
 
 		int GetMouseBtn()	const { return nMouseBtn; }
 		void SetMouseBtn(int val)	{ nMouseBtn = val; }

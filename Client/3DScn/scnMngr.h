@@ -3,6 +3,7 @@
 
 #include <string>
 #include <map>
+#include "scnNode.h"
 
 namespace CFScn
 {
@@ -15,8 +16,11 @@ namespace CFScn
 
 		void SetName(const std::string& nm)	{ m_strName = nm; }
 		const std::string& GetName()		{ return m_strName; }
+		CScnNode* GetRootNode() { return m_pRootNode; }
 	protected:
 		std::string		m_strName;
+
+		CScnNode		*m_pRootNode;
 	};
 }
 

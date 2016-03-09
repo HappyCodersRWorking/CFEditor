@@ -74,7 +74,7 @@ namespace CFInput
 		ie.SetTime(g_dSysTime);
 		ie.SetFlg(flg);
 		ie.SetMouseBtn(ky);
-		ie.SetMousePos(LinearMath::Vec2f(x, y));
+		ie.SetMousePos(CFMath::Vec2f(x, y));
 
 		noticeLsnr(ie);
 
@@ -87,7 +87,7 @@ namespace CFInput
 		ie.SetTime(g_dSysTime);
 		ie.SetFlg(flg);
 		ie.SetMouseBtn(ky);
-		ie.SetMousePos(LinearMath::Vec2f(x, y));
+		ie.SetMousePos(CFMath::Vec2f(x, y));
 
 		noticeLsnr(ie);
 		
@@ -99,7 +99,7 @@ namespace CFInput
 		InputEvent ie(MouseUp);
 		ie.SetTime(g_dSysTime);
 		ie.SetFlg(flg);
-		ie.SetMousePos(LinearMath::Vec2f(x, y));
+		ie.SetMousePos(CFMath::Vec2f(x, y));
 
 		noticeLsnr(ie);
 		
@@ -110,7 +110,7 @@ namespace CFInput
 	{
 		InputEvent ie(MouseWheel);
 		ie.SetTime(g_dSysTime);
-		ie.SetMousePos(LinearMath::Vec2f(x, y));
+		ie.SetMousePos(CFMath::Vec2f(x, y));
 		ie.SetFlg(flg);
 		ie.SetDelta(delta);
 
