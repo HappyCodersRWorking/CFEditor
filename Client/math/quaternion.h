@@ -71,6 +71,9 @@ namespace CFMath
 	protected:
 		T x, y, z, w;
 	};
+
+	typedef CQuaternion<float>		CQuatf;
+	typedef CQuaternion<double>		CQuatd;
 }
 
 #endif

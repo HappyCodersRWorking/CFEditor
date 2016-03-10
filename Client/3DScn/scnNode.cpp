@@ -3,10 +3,12 @@
 namespace CFScn
 {
 	CScnNode::CScnNode()
+		:m_bTransDirty(false)
 	{}
 
 	CScnNode::CScnNode(CScnNode* parent)
-	:m_pParent(parent){}
+		: m_bTransDirty(false)
+		, m_pParent(parent){}
 
 	CScnNode::~CScnNode()
 	{
@@ -83,5 +85,25 @@ namespace CFScn
 		}
 
 		return false ;
+	}
+
+	void CScnNode::SetPos(const CFMath::Vec3f& p)
+	{
+		m_vPos = p;
+		m_bTransDirty = false;
+	}
+
+	void CScnNode::SetRotation(const CFMath::CQuatf& rot)
+	{
+		m_qRot = rot;
+		m_bTransDirty = false;
+	}
+
+	void CScnNode::Render(CRenderContext* cntxt)
+	{
+		for (int i = 0; i < m_vecChildren.size(); i++)
+		{
+			m_vecChildren[i]->Render(cntxt);
+		}
 	}
 }

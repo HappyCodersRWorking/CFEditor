@@ -3,10 +3,13 @@
 
 #include <vector>
 #include "../math/cfMath.h"
+#include "../common/tiny_str.h"
+#include "../common/cfObject.h"
+#include "renderContext.h"
 
 namespace CFScn
 {
-	class CScnNode
+	class CScnNode : public CF::Object
 	{
 	public:
 		CScnNode();
@@ -33,13 +36,20 @@ namespace CFScn
 				return NULL;
 			return m_vecChildren[index];
 		}
+
+		void SetPos( const CFMath::Vec3f& p );
+		const CFMath::Vec3f& GetPos()	{ return m_vPos; }
+		void SetRotation(const CFMath::CQuatf& rot);
+		const CFMath::CQuatf& GetRotation()	{ return m_qRot; }
+
+		virtual void Render(CRenderContext*);
 	protected:
-		CScnNode		*m_pParent;
-
+		CScnNode				*m_pParent;
 		std::vector<CScnNode*>	m_vecChildren;
+		CFMath::Vec3f			m_vPos;
+		CFMath::CQuatf			m_qRot;
 
-		CFMath::Vec3f		m_vPos;
-
+		bool					m_bTransDirty;
 	};
 }
 

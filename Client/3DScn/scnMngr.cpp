@@ -17,4 +17,12 @@ namespace CFScn
 
 		return true;
 	}
+
+	void CScnMngr::Render(CRenderContext* cntxt)
+	{
+		if (!m_pRootNode)
+			return;
+
+		m_pRootNode->Render(cntxt);
+	}
 }

@@ -83,12 +83,14 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="3DScn\glRenderContext.h" />
+    <ClInclude Include="3DScn\renderContext.h" />
     <ClInclude Include="3DScn\scnMngr.h" />
     <ClInclude Include="3DScn\scnNode.h" />
     <ClInclude Include="command\cmdGen.h" />
     <ClInclude Include="command\command.h" />
     <ClInclude Include="common\cfObject.h" />
-    <ClInclude Include="common\tinyStr.h" />
+    <ClInclude Include="common\tiny_str.h" />
     <ClInclude Include="common\tools.h" />
     <ClInclude Include="Editor\Editable.h" />
     <ClInclude Include="Editor\EditEventLnsr.h" />
@@ -140,6 +142,13 @@
     <ClInclude Include="math\vec2.h" />
     <ClInclude Include="math\vec3.h" />
     <ClInclude Include="math\vec4.h" />
+    <ClInclude Include="Res\runTimeRes\streamVideo.h" />
+    <ClInclude Include="Res\runTimeRes\streamSound.h" />
+    <ClInclude Include="Res\staticRes\aniData.h" />
+    <ClInclude Include="Res\staticRes\model.h" />
+    <ClInclude Include="Res\staticRes\soundClip.h" />
+    <ClInclude Include="Res\staticRes\tex.h" />
+    <ClInclude Include="Res\staticRes\videoClip.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="tinyxml\tinystr.h" />
@@ -153,7 +162,7 @@
   <ItemGroup>
     <ClCompile Include="3DScn\scnMngr.cpp" />
     <ClCompile Include="3DScn\scnNode.cpp" />
-    <ClCompile Include="common\tinyStr.cpp" />
+    <ClCompile Include="common\tiny_str.cpp" />
     <ClCompile Include="common\tools.cpp" />
     <ClCompile Include="Editor\Editable.cpp" />
     <ClCompile Include="Editor\EditorContext.cpp" />
@@ -196,6 +205,13 @@
     <ClCompile Include="lua\lutf8lib.c" />
     <ClCompile Include="lua\lvm.c" />
     <ClCompile Include="lua\lzio.c" />
+    <ClCompile Include="Res\runTimeRes\streamVideo.cpp" />
+    <ClCompile Include="Res\runTimeRes\streamSound.cpp" />
+    <ClCompile Include="Res\staticRes\aniData.cpp" />
+    <ClCompile Include="Res\staticRes\model.cpp" />
+    <ClCompile Include="Res\staticRes\soundClip.cpp" />
+    <ClCompile Include="Res\staticRes\tex.cpp" />
+    <ClCompile Include="Res\staticRes\videoClip.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="tinyxml\tinystr.cpp" />
     <ClCompile Include="tinyxml\tinyxml.cpp" />

@@ -149,6 +149,10 @@ void CGLWnd::OnPaintTmr(wxTimerEvent& WXUNUSED(event))
 {
 	glClearColor(0.5, 0.2, 0.2, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT);
+
+	if (m_pContext)
+		m_pContext->Paint();
+
 	SwapBuffers();
 }
 }
