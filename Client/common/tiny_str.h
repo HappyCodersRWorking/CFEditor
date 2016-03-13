@@ -2,6 +2,8 @@
 #define _CF_TINY_STR_H_
 
 #include "assert.h"
+#include "stdlib.h"
+#include "stdio.h"
 
 namespace CF
 {
@@ -182,6 +184,59 @@ namespace CF
 				}
 			}
 			return true;
+		}
+
+		const CTiStr& operator+=(T ch)
+		{
+			int maxEleCnt = GetEleCntByType(m_eSzTp);
+			int curEleCt = m_nDataLen / sizeof(T);
+			
+			if (curEleCt >= maxEleCnt)
+			{
+				assert( 0 && "CTiStr  += T , overflow ..." );
+				return *this;
+			}
+
+			m_pData[curEleCt-1] = ch;
+			m_pData[curEleCt] = 0;
+
+			return *this;
+		}
+
+		const CTiStr& operator+=(const T* s )
+		{
+			int maxEleCnt = GetEleCntByType(m_eSzTp);
+			int curEleCt = m_nDataLen / sizeof(T);
+
+			int inCnt = 0;
+			for (int i = 0; i < 512; i++)
+			{
+				if (s[i] == 0)
+					break;
+
+				inCnt ++ ;
+			}
+
+			int added = 0;
+			for( int i = curEleCt ; i < maxEleCnt ; i ++ )
+			{
+				if (added >= inCnt)
+				{
+					break;
+				}
+
+				m_pData[i] = s[added] ;
+
+				added++;
+			}
+
+			return *this;
+		}
+
+
+		const CTiStr& operator+=( int n )
+		{
+			return *this;
 		}
 
 	protected:
